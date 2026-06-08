@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  ImageBackground,
+} from "react-native";
 import api from "../services/api";
 
 export default function SensoresScreen() {
@@ -19,36 +25,62 @@ export default function SensoresScreen() {
   }
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={sensores}
-        keyExtractor={(item: any) => item.id.toString()}
-        renderItem={({ item }: any) => (
-          <View style={styles.card}>
-            <Text style={styles.nome}>{item.nome}</Text>
-            <Text>Tipo: {item.tipo}</Text>
-            <Text>Leitura: {item.valorLeitura}</Text>
-          </View>
-        )}
-      />
-    </View>
+    <ImageBackground
+      source={require("../../assets/galaxia.jpg")}
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.overlay}>
+        <Text style={styles.titulo}>Sensores</Text>
+
+        <FlatList
+          data={sensores}
+          keyExtractor={(item: any) => item.id.toString()}
+          renderItem={({ item }: any) => (
+            <View style={styles.card}>
+              <Text style={styles.nome}>{item.nome}</Text>
+              <Text>Tipo: {item.tipo}</Text>
+              <Text>Leitura: {item.valorLeitura}</Text>
+            </View>
+          )}
+        />
+      </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
-    backgroundColor: "#79059C",
-    padding: 15,
+    width: "100%",
+    height: "100%",
   },
-  card: {
-    backgroundColor: "#fff",
+
+  overlay: {
+    flex: 1,
     padding: 15,
-    borderRadius: 10,
-    marginBottom: 10,
+    backgroundColor: "rgba(0,0,0,0.35)",
   },
-  nome: {
+
+  titulo: {
+    fontSize: 28,
     fontWeight: "bold",
-    fontSize: 16,
+    color: "#fff",
+    textAlign: "center",
+    marginBottom: 20,
+    marginTop: 10,
+  },
+
+  card: {
+    backgroundColor: "rgba(255,255,255,0.95)",
+    padding: 15,
+    borderRadius: 12,
+    marginBottom: 12,
+  },
+
+  nome: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 5,
   },
 });

@@ -42,7 +42,7 @@ export default function AlertasScreen() {
       resizeMode="cover"
     >
       <View style={styles.container}>
-        <Text style={styles.titulo}> Alertas</Text>
+        <Text style={styles.titulo}>Alertas</Text>
 
         <FlatList
           data={alertas}
@@ -64,7 +64,7 @@ export default function AlertasScreen() {
                   style={[
                     styles.botaoNivel,
                     styles.baixo,
-                    item.nivel === "baixo" &&
+                    item.nivel === "BAIXO" &&
                       styles.selecionado,
                   ]}
                   onPress={() =>
@@ -80,7 +80,7 @@ export default function AlertasScreen() {
                   style={[
                     styles.botaoNivel,
                     styles.medio,
-                    item.nivel === "medio" &&
+                    item.nivel === "MEDIO" &&
                       styles.selecionado,
                   ]}
                   onPress={() =>
@@ -96,7 +96,7 @@ export default function AlertasScreen() {
                   style={[
                     styles.botaoNivel,
                     styles.alto,
-                    item.nivel === "alto" &&
+                    item.nivel === "ALTO" &&
                       styles.selecionado,
                   ]}
                   onPress={() =>
@@ -112,7 +112,7 @@ export default function AlertasScreen() {
                   style={[
                     styles.botaoNivel,
                     styles.critico,
-                    item.nivel === "critico" &&
+                    item.nivel === "CRITICO" &&
                       styles.selecionado,
                   ]}
                   onPress={() =>
@@ -173,7 +173,6 @@ const styles = StyleSheet.create({
 
   botoesContainer: {
     flexDirection: "row",
-    flexWrap: "wrap",
     justifyContent: "space-between",
     marginTop: 12,
   },
@@ -199,12 +198,22 @@ const styles = StyleSheet.create({
 
   critico: {
     backgroundColor: "#DC2626",
-  },
-
+    },
   selecionado: {
     borderWidth: 3,
-    borderColor: "#000",
-  },
+    borderColor: "#FFFFFF",
+    transform: [{ scale: 1.08 }],
+
+    shadowColor: "#a1a2a2",
+    shadowOffset: {
+        width: 0,
+        height: 0,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 10,
+
+    elevation: 8,
+    },
 
   textoBotao: {
     color: "#FFF",
